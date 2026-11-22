@@ -1,38 +1,10 @@
-cat << 'EOF' > .github/workflows/build-apk.yml
-name: Build Debug APK
 
-on:
-  push:
-      branches: [ "**" ]
-        workflow_dispatch:
         
-        jobs:
-          build:
-              runs-on: ubuntu-latest
-                  steps:
-                        - name: Checkout code
-                                uses: actions/checkout@v4
                                 
-                                      - name: Set up JDK 17
-                                              uses: actions/setup-java@v4
-                                                      with:
-                                                                java-version: '17'
-                                                                          distribution: 'temurin'
-                                                                                    cache: 'gradle'
                                                                                     
-                                                                                          - name: Grant execute permission for gradlew
-                                                                                                  run: chmod +x gradlew
                                                                                                   
-                                                                                                        - name: Accept Android SDK licenses
-                                                                                                                run: |
-                                                                                                                          mkdir -p "$ANDROID_HOME/licenses"
-                                                                                                                                    printf "\n24333f8a63b6825ea9c5514f83c2829b004d1fee" > "$ANDROID_HOME/licenses/android-sdk-license"
                                                                                                                                     
-                                                                                                                                          - name: Build Debug APK
-                                                                                                                                                  run: ./gradlew assembleDebug
                                                                                                                                                   
-                                                                                                                                                        - name: Upload Debug APK
-                                                                                                                                                                        with:
                                                                                                                                                                                             plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")

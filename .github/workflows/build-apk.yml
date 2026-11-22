@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -24,8 +26,16 @@ jobs:
       - name: Build Debug APK
         run: ./gradlew assembleDebug
 
-      - name: Upload APK
+      - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: NoorAlSalhi-debug-apk
           path: app/build/outputs/apk/debug/*.apk
+
+      - name: Publish Direct APK Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest-debug
+          name: NoorAlSalhi Direct APK
+          files: app/build/outputs/apk/debug/*.apk
+          make_latest: true

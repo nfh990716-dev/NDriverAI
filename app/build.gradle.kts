@@ -32,10 +32,7 @@ on:
                                                                                                                                                   run: ./gradlew assembleDebug
                                                                                                                                                   
                                                                                                                                                         - name: Upload Debug APK
-                                                                                                                                                                uses: actions/upload-artifact@v4
                                                                                                                                                                         with:
-                                                                                                                                                                                  name: app-debug
-                                                                                                                                                                                            path: app/build/outputs/apk/debug/app-debug.apk
                                                                                                                                                                                             plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")

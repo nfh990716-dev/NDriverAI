@@ -12,14 +12,13 @@ android {
     defaultConfig {
         applicationId = "com.nooralsalhi.rideanalyzer"
         minSdk = 26
-        targetSdk = 36
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
-        debug { applicationIdSuffix = ".debug"; versionNameSuffix = "-debug" }
         release {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
